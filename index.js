@@ -4,6 +4,7 @@ const persons = [
   {
     id: 1,
     name: 'Leanne Graham',
+    age: 18,
     username: 'Bret',
     email: 'Sincere@april.biz',
     phone: '1-770-736-8031 x56442',
@@ -12,6 +13,7 @@ const persons = [
   {
     id: 2,
     name: 'Ervin Howell',
+    age: 45,
     username: 'Antonette',
     email: 'Shanna@melissa.tv',
     phone: '010-692-6593 x09125',
@@ -20,6 +22,7 @@ const persons = [
   {
     id: 3,
     name: 'Clementine Bauch',
+    age: 32,
     username: 'Samantha',
     email: 'Nathan@yesenia.net',
     phone: '1-463-123-4447',
@@ -28,6 +31,7 @@ const persons = [
   {
     id: 4,
     name: 'Patricia Lebsack',
+    age: 17,
     username: 'Karianne',
     email: 'Julianne.OConner@kory.org',
 
@@ -37,15 +41,16 @@ const persons = [
   {
     id: 5,
     name: 'Chelsey Dietrich',
+    age: 27,
     username: 'Kamren',
     email: 'Lucio_Hettinger@annie.ca',
-
     phone: '(254)954-1289',
     website: 'demarco.info',
   },
   {
     id: 6,
     name: 'Mrs. Dennis Schulist',
+    age: 40,
     username: 'Leopoldo_Corkery',
     email: 'Karley_Dach@jasper.info',
     website: 'ola.org',
@@ -53,6 +58,7 @@ const persons = [
   {
     id: 7,
     name: 'Kurtis Weissnat',
+    age: 34,
     username: 'Elwyn.Skiles',
     email: 'Telly.Hoeger@billy.biz',
     phone: '210.067.6132',
@@ -69,6 +75,7 @@ const typeDefs = gql`
     phone: String
     website: String
     employee: String!
+    legalAge: Boolean!
   }
 
   type Query {
@@ -90,6 +97,7 @@ const resolvers = {
   Person: {
     email: (root) => `${root.email}, ${root.phone}`,
     employee: () => 'yes',
+    legalAge: (root) => root.age >= 18,
   },
 };
 
